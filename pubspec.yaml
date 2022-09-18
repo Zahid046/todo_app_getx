@@ -17,7 +17,6 @@ dependencies:
 
   get: ^4.6.5
   connectivity_plus: ^2.3.6+1
-
   cupertino_icons: ^1.0.2
   flutter_dotenv: ^5.0.2
   http: ^0.13.5
@@ -38,7 +37,11 @@ dependencies:
   shared_preferences: ^2.0.15
   syncfusion_flutter_datepicker: ^20.2.40
   timeline_tile: ^2.0.0
-
+  lottie: ^1.3.0
+  motion_toast: ^2.1.6
+  flutter_slidable: 1.2.0
+  day_night_switcher: ^0.2.0+1
+  dynamic_themes: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -76,3 +79,18 @@ flutter:
         - asset: assets/fonts/texts/Poppins-SemiBoldItalic.ttf
         - asset: assets/fonts/texts/Poppins-Thin.ttf
         - asset: assets/fonts/texts/Poppins-ThinItalic.ttf
+
+    - family: Rubik
+      fonts:
+        - asset: assets/fonts/Rubik/Rubik-Regular.ttf
+        - asset: assets/fonts/Rubik/Rubik-Italic.ttf
+        - asset: assets/fonts/Rubik/Rubik-BlackItalic.ttf
+        - asset: assets/fonts/Rubik/Rubik-ExtraBold.ttf
+        - asset: assets/fonts/Rubik/Rubik-Bold.ttf
+        - asset: assets/fonts/Rubik/Rubik-Black.ttf
+        - asset: assets/fonts/Rubik/Rubik-Medium.ttf
+        - asset: assets/fonts/Rubik/Rubik-MediumItalic.ttf
+        - asset: assets/fonts/Rubik/Rubik-SemiBold.ttf
+        - asset: assets/fonts/Rubik/Rubik-SemiBoldItalic.ttf
+        - asset: assets/fonts/Rubik/Rubik-Light.ttf
+        - asset: assets/fonts/Rubik/Rubik-LightItalic.ttf
