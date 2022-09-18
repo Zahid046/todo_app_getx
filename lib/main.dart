@@ -1,11 +1,15 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:todo_app_getx/constants/routes.dart';
 import 'package:todo_app_getx/controllers/binder_controller.dart';
 import 'package:todo_app_getx/themes/theme_data.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
 
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   'high_importance_channel',
@@ -30,6 +34,11 @@ const InitializationSettings initializationSettings = InitializationSettings(
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //* info:: hive initialization
+  await Hive.close();
+  var directory = await path_provider.getApplicationDocumentsDirectory();
+  log('path:${directory.path}');
+  Hive.init(directory.path);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
   await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(channel);
 

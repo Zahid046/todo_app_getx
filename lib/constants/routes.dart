@@ -35,7 +35,7 @@ List<GetPage<dynamic>>? routes = [
   // GetPage(name: krResetPass, page: () => ResetPass()),
 
   //* info:: home screen
-  GetPage(name: krHome, page: () => const HomePage(), transition: Transition.noTransition),
+  GetPage(name: krHome, page: () => HomePage(), transition: Transition.noTransition),
   // GetPage(name: krNotification, page: () => NotificationPage()),
 
   //* info:: More pages

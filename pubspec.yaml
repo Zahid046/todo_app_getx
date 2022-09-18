@@ -42,6 +42,7 @@ dependencies:
   flutter_slidable: 1.2.0
   day_night_switcher: ^0.2.0+1
   dynamic_themes: ^1.1.0
+  battery_plus: ^2.1.4
 
 dev_dependencies:
   flutter_test:
@@ -53,9 +54,8 @@ flutter:
 
   uses-material-design: true
 
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
 
 
   fonts:
@@ -82,15 +82,15 @@ flutter:
 
     - family: Rubik
       fonts:
-        - asset: assets/fonts/Rubik/Rubik-Regular.ttf
-        - asset: assets/fonts/Rubik/Rubik-Italic.ttf
-        - asset: assets/fonts/Rubik/Rubik-BlackItalic.ttf
-        - asset: assets/fonts/Rubik/Rubik-ExtraBold.ttf
-        - asset: assets/fonts/Rubik/Rubik-Bold.ttf
-        - asset: assets/fonts/Rubik/Rubik-Black.ttf
-        - asset: assets/fonts/Rubik/Rubik-Medium.ttf
-        - asset: assets/fonts/Rubik/Rubik-MediumItalic.ttf
-        - asset: assets/fonts/Rubik/Rubik-SemiBold.ttf
-        - asset: assets/fonts/Rubik/Rubik-SemiBoldItalic.ttf
-        - asset: assets/fonts/Rubik/Rubik-Light.ttf
-        - asset: assets/fonts/Rubik/Rubik-LightItalic.ttf
+        - asset: assets/fonts/texts/Rubik/Rubik-Regular.ttf
+        - asset: assets/fonts/texts/Rubik/Rubik-Italic.ttf
+        - asset: assets/fonts/texts/Rubik/Rubik-BlackItalic.ttf
+        - asset: assets/fonts/texts/Rubik/Rubik-ExtraBold.ttf
+        - asset: assets/fonts/texts/Rubik/Rubik-Bold.ttf
+        - asset: assets/fonts/texts/Rubik/Rubik-Black.ttf
+        - asset: assets/fonts/texts/Rubik/Rubik-Medium.ttf
+        - asset: assets/fonts/texts/Rubik/Rubik-MediumItalic.ttf
+        - asset: assets/fonts/texts/Rubik/Rubik-SemiBold.ttf
+        - asset: assets/fonts/texts/Rubik/Rubik-SemiBoldItalic.ttf
+        - asset: assets/fonts/texts/Rubik/Rubik-Light.ttf
+        - asset: assets/fonts/texts/Rubik/Rubik-LightItalic.ttf
