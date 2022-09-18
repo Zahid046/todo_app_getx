@@ -1,10 +1,12 @@
 import 'dart:developer';
 
-
 import 'package:flutter/material.dart';
+import 'package:todo_app_getx/constants/colors.dart';
 import 'package:todo_app_getx/constants/dimensions.dart';
 import 'package:todo_app_getx/constants/styles.dart';
 import 'package:todo_app_getx/constants/values.dart';
+import 'package:motion_toast/motion_toast.dart';
+import 'package:motion_toast/resources/arrays.dart';
 
 void heightWidth(context) {
   height = MediaQuery.of(context).size.height;
@@ -44,4 +46,18 @@ SnackBar getSnackBar(context, wid, title, message, color) {
       ],
     ),
   );
+}
+
+void showToast(BuildContext context, IconData icon, String title, String message, Color color) {
+  MotionToast(
+    icon: icon,
+    title: Text(title, style: f16TextStyle(cWhiteColor, FontWeight.w600)),
+    description: Text(
+      message,
+      style: f14TextStyle(cWhiteColor, FontWeight.w500),
+    ),
+    position: MotionToastPosition.bottom,
+    animationType: AnimationType.fromBottom,
+    primaryColor: color,
+  ).show(context);
 }

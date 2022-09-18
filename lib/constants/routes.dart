@@ -2,6 +2,7 @@
 
 import 'package:get/get.dart';
 import 'package:todo_app_getx/screens/home/home_page.dart';
+import 'package:todo_app_getx/screens/task/task_list.dart';
 
 const String krLogin = '/login';
 const String krResister = '/resister';
@@ -12,6 +13,7 @@ const String krOTP = '/otp';
 //* info:: home screen
 const String krSplashScreen = '/splash-screen';
 const String krHome = '/home';
+const String krTask = '/all-task';
 const String krNotification = '/notification';
 const String krContactUs = '/contact-us';
 const String krSettings = '/settings';
@@ -36,6 +38,7 @@ List<GetPage<dynamic>>? routes = [
 
   //* info:: home screen
   GetPage(name: krHome, page: () => HomePage(), transition: Transition.noTransition),
+  GetPage(name: krTask, page: () => AllTask(),),
   // GetPage(name: krNotification, page: () => NotificationPage()),
 
   //* info:: More pages

@@ -2,12 +2,15 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:todo_app_getx/constants/routes.dart';
 import 'package:todo_app_getx/controllers/binder_controller.dart';
+import 'package:todo_app_getx/helper/utility.dart';
+import 'package:todo_app_getx/models/environment.dart';
 import 'package:todo_app_getx/themes/theme_data.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
@@ -36,6 +39,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //* info:: hive initialization
   await Hive.close();
+  await dotenv.load(fileName: Environment.fileName);
+  ll(Environment.fileName.toString());
   var directory = await path_provider.getApplicationDocumentsDirectory();
   log('path:${directory.path}');
   Hive.init(directory.path);
@@ -81,7 +86,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         defaultTransition: Transition.rightToLeft,
         theme: themeData,
-        initialRoute: krHome,
+        initialRoute: krTask,
         getPages: routes,
         initialBinding: BinderController(),
       ),

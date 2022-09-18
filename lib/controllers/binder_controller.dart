@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:todo_app_getx/controllers/global_controller.dart';
 import 'package:todo_app_getx/controllers/home_controllers/home_controller.dart';
+import 'package:todo_app_getx/controllers/task_controllers/task_controller.dart';
 
 class BinderController implements Bindings {
   @override
@@ -8,5 +9,6 @@ class BinderController implements Bindings {
     Get.put(GlobalController(), permanent: true);
 
     Get.lazyPut<HomeController>(() => HomeController(), fenix: true);
+    Get.lazyPut<TaskController>(() => TaskController(), fenix: true);
   }
 }

@@ -10,8 +10,8 @@ import 'package:todo_app_getx/widgets/buttons/text_button.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final HomeController _homeController = Get.find<HomeController>();
 
@@ -95,8 +95,8 @@ class HomePage extends StatelessWidget {
                           onPressed: () async {
                             FocusScope.of(context).unfocus();
                             var box = await Hive.openBox('myBox');
-                            await box.put('max', int.parse(_homeController.maxLevelController.text));
-                            await box.put('min', int.parse(_homeController.minLevelController.text));
+                            await box.put('max', int.parse(_homeController.maxLevelController.text.isEmpty ? '0' : _homeController.maxLevelController.text));
+                            await box.put('min', int.parse(_homeController.minLevelController.text.isEmpty ? '0' : _homeController.minLevelController.text));
                             await box.put('is_max_notified', false);
                             await box.put('is_min_notified', false);
                           },
