@@ -13,6 +13,10 @@ class DateConverter {
     return DateFormat('dd MMM yyyy').format(DateFormat('yyyy-MM-dd HH:mm:ss').parse(dateTime));
   }
 
+  static String dateStringToDate(String date) {
+    return DateFormat('dd MMM yyyy').format(DateFormat('yyyy-MM-dd').parse(date));
+  }
+
   static DateTime dateTimeStringToDate(String dateTime) {
     return DateFormat('yyyy-MM-dd HH:mm:ss').parse(dateTime);
   }
@@ -46,7 +50,7 @@ class DateConverter {
   }
 
   static String convertTimeToTime(String time) {
-    return DateFormat(_timeFormatter('24')).format(DateFormat('hh:mm:ss').parse(time));
+    return DateFormat(_timeFormatter('24')).format(DateFormat('HH:mm:ss').parse(time));
   }
 
   static int timeDistanceInMin(String time) {
@@ -56,7 +60,7 @@ class DateConverter {
   }
 
   static String _timeFormatter(format) {
-    return format == '24' ? 'HH:mm' : 'hh:mm a';
+    return format == '24' ? 'HH:mm' : 'HH:mm a';
   }
 
   static bool isBeforeTime(String dateTime) {

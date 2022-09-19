@@ -2,14 +2,18 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
+import 'package:todo_app_getx/constants/values.dart';
 import 'package:todo_app_getx/helper/utility.dart';
 import 'package:todo_app_getx/models/environment.dart';
 
 class ApiController {
-  Future<dynamic> commonPostWithoutToken({required String url, required Map<String, dynamic> body, required double? width, required BuildContext context, int? timer}) async {
+  Future<dynamic> commonPostWithoutToken({
+    required String url,
+    required Map<String, dynamic> body,
+    int? timer,
+  }) async {
     final http.Client client = http.Client();
     final Uri uri = Uri.parse(Environment.apiUrl + url);
     http.Response response;
@@ -18,14 +22,12 @@ class ApiController {
       response = await client.post(
         uri,
         body: body,
-        headers: {'app-role': 'customer'},
+        headers: {},
       ).timeout(
         Duration(seconds: timer ?? 30),
         onTimeout: () {
           error = 'Connection time out';
-
-          ScaffoldMessenger.of(context).clearSnackBars();
-          ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+          errorSnackBar('Error', error, kSnackbarDuration);
           throw TimeoutException('Connection time out');
         },
       );
@@ -34,15 +36,11 @@ class ApiController {
       return jsonDecode(response.body);
     } on SocketException {
       error = 'No internet connection';
-
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+      errorSnackBar('Error', error, kSnackbarDuration);
       return null;
     } catch (e) {
       log(e.toString());
-
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+      errorSnackBar('Error', error, kSnackbarDuration);
       return null;
     } finally {
       client.close();
@@ -50,9 +48,11 @@ class ApiController {
   }
 
   //* info:: common get without token
-  Future<dynamic> commonGetWithoutToken({required String url, required BuildContext context, int? timer, double? width}) async {
+  Future<dynamic> commonGetWithoutToken({
+    required String url,
+    int? timer,
+  }) async {
     final http.Client client = http.Client();
-    // final Uri uri = Uri.parse(Environment.apiUrl + url);
     final Uri uri = Uri.parse(Environment.apiUrl + url);
     ll('url: $uri');
 
@@ -63,25 +63,20 @@ class ApiController {
         Duration(seconds: timer ?? 30),
         onTimeout: () {
           error = 'Connection time out';
-          ScaffoldMessenger.of(context).clearSnackBars();
-          ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+          errorSnackBar('Error', error, kSnackbarDuration);
           throw TimeoutException('Connection time out');
         },
       );
 
-      ll('response : ${response.body}');
+      // ll('response : ${response.body}');
       return jsonDecode(response.body);
     } on SocketException {
       error = 'No internet connection';
-
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+      errorSnackBar('Error', error, kSnackbarDuration);
       return null;
     } catch (e) {
       log(e.toString());
-
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+      errorSnackBar('Error', error, kSnackbarDuration);
       return null;
     } finally {
       client.close();
@@ -89,7 +84,11 @@ class ApiController {
   }
 
   //* info:: common get
-  Future<dynamic> commonGet({required String? token, required String url, required BuildContext context, int? timer, double? width}) async {
+  Future<dynamic> commonGet({
+    required String? token,
+    required String url,
+    int? timer,
+  }) async {
     final http.Client client = http.Client();
     final Uri uri = Uri.parse(Environment.apiUrl + url);
 
@@ -100,8 +99,7 @@ class ApiController {
         Duration(seconds: timer ?? 30),
         onTimeout: () {
           error = 'Connection time out';
-          ScaffoldMessenger.of(context).clearSnackBars();
-          ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+          errorSnackBar('Error', error, kSnackbarDuration);
           throw TimeoutException('Connection time out');
         },
       );
@@ -110,15 +108,11 @@ class ApiController {
       return jsonDecode(response.body);
     } on SocketException {
       error = 'No internet connection';
-
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+      errorSnackBar('Error', error, kSnackbarDuration);
       return null;
     } catch (e) {
       log(e.toString());
-
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+      errorSnackBar('Error', error, kSnackbarDuration);
       return null;
     } finally {
       client.close();
@@ -130,8 +124,6 @@ class ApiController {
     required String? token,
     required String url,
     required Map<String, dynamic> body,
-    required double? width,
-    required BuildContext context,
     int? timer,
   }) async {
     final http.Client client = http.Client();
@@ -143,9 +135,7 @@ class ApiController {
         Duration(seconds: timer ?? 30),
         onTimeout: () {
           error = 'Connection time out';
-
-          ScaffoldMessenger.of(context).clearSnackBars();
-          ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+          errorSnackBar('Error', error, kSnackbarDuration);
           throw TimeoutException('Connection time out');
         },
       );
@@ -154,15 +144,11 @@ class ApiController {
       return jsonDecode(response.body);
     } on SocketException {
       error = 'No internet connection';
-
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+      errorSnackBar('Error', error, kSnackbarDuration);
       return null;
     } catch (e) {
       log(e.toString());
-
-      ScaffoldMessenger.of(context).clearSnackBars();
-      ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+      errorSnackBar('Error', error, kSnackbarDuration);
       return null;
     } finally {
       client.close();
@@ -174,8 +160,6 @@ class ApiController {
     required String? token,
     required String url,
     required Map<String, dynamic> body,
-    required double? width,
-    required BuildContext context,
     int? timer,
   }) async {
     Dio dio = Dio();
@@ -188,9 +172,7 @@ class ApiController {
         Duration(seconds: timer ?? 30),
         onTimeout: () {
           error = 'Connection time out';
-
-          ScaffoldMessenger.of(context).clearSnackBars();
-          ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+          errorSnackBar('Error', error, kSnackbarDuration);
           throw TimeoutException('Connection time out');
         },
       );
@@ -200,15 +182,11 @@ class ApiController {
     } on DioError catch (e) {
       if (e.error is SocketException) {
         error = 'No internet connection';
-
-        ScaffoldMessenger.of(context).clearSnackBars();
-        ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+        errorSnackBar('Error', error, kSnackbarDuration);
         return null;
       } else {
         log(e.toString());
-
-        ScaffoldMessenger.of(context).clearSnackBars();
-        ScaffoldMessenger.of(context).showSnackBar(getSnackBar(context, width, 'Error', error, Colors.red));
+        errorSnackBar('Error', error, kSnackbarDuration);
         return null;
       }
     } finally {

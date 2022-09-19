@@ -4,6 +4,8 @@ import 'package:todo_app_getx/constants/dimensions.dart';
 double height = 0.0;
 double width = 0.0;
 
+const kSnackbarDuration = 1500;
+
 //* empty sized box with only width
 const kEmptySizedBox = SizedBox();
 const kW4sizedBox = SizedBox(width: kSmallPaddingUnit);

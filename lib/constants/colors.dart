@@ -19,3 +19,6 @@ const Color cErrorColor = Color(0xFFF66060);
 const Color cBackgroundColor = Color(0xFFE5E5E5);
 const Color cTimeLineIndicatorColor = Color(0xFFEEECEC);
 const Color cTransparentColor = Colors.transparent;
+//* snackBar colors
+const Color cWarningColor = Color(0xffE39A0F);
+const Color cInfoColor = Color(0xff4DA1F1);

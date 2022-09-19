@@ -1,12 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:todo_app_getx/constants/colors.dart';
-import 'package:todo_app_getx/constants/dimensions.dart';
-import 'package:todo_app_getx/constants/styles.dart';
 import 'package:todo_app_getx/constants/values.dart';
-import 'package:motion_toast/motion_toast.dart';
-import 'package:motion_toast/resources/arrays.dart';
+
 
 void heightWidth(context) {
   height = MediaQuery.of(context).size.height;
@@ -17,47 +15,55 @@ void ll(message) {
   log(message.toString());
 }
 
-SnackBar getSnackBar(context, wid, title, message, color) {
-  return SnackBar(
-    dismissDirection: DismissDirection.down,
-    width: wid * .8,
-    shape: RoundedRectangleBorder(
-      borderRadius: k10BorderRadius,
-    ),
-    behavior: SnackBarBehavior.floating,
-    elevation: kCommonElevation,
-    backgroundColor: color,
-    duration: const Duration(milliseconds: 2000),
-    content: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          title,
-          style: f16TextStyle(Colors.white, FontWeight.w600),
-          textAlign: TextAlign.center,
-        ),
-        kH8sizedBox,
-        Text(
-          message,
-          style: f14TextStyle(Colors.white, FontWeight.w400),
-          textAlign: TextAlign.center,
-        ),
-      ],
-    ),
-  );
-}
-
-void showToast(BuildContext context, IconData icon, String title, String message, Color color) {
-  MotionToast(
-    icon: icon,
-    title: Text(title, style: f16TextStyle(cWhiteColor, FontWeight.w600)),
-    description: Text(
+  void errorSnackBar(title, message, duration) {
+    Get.snackbar(
+      title,
       message,
-      style: f14TextStyle(cWhiteColor, FontWeight.w500),
-    ),
-    position: MotionToastPosition.bottom,
-    animationType: AnimationType.fromBottom,
-    primaryColor: color,
-  ).show(context);
-}
+      backgroundColor: cErrorColor,
+      colorText: cWhiteColor,
+      maxWidth: 400,
+      duration: Duration(milliseconds: duration),
+    );
+  }
+
+  void warningSnackBar(title, message, duration) {
+    Get.snackbar(
+      title,
+      message,
+      backgroundColor: cWarningColor,
+      colorText: cWhiteColor,
+      maxWidth: 400,
+      duration: Duration(milliseconds: duration),
+    );
+  }
+
+  void successSnackBar(title, message, duration) {
+    Get.snackbar(
+      title,
+      message,
+      backgroundColor: cSuccessColor,
+      colorText: cWhiteColor,
+      maxWidth: 400,
+      duration: Duration(milliseconds: duration),
+    );
+  }
+
+  void infoSnackBar(title, message, duration) {
+    Get.snackbar(
+      title,
+      message,
+      backgroundColor: cInfoColor,
+      colorText: cWhiteColor,
+      maxWidth: 400,
+      duration: Duration(milliseconds: duration),
+    );
+  }
+
+  void notificationSnackBar(title, message, duration) {
+    Get.snackbar(
+      title,
+      message,
+      maxWidth: 400,
+      duration: Duration(milliseconds: duration),
+    );
+  }
