@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_getx/constants/colors.dart';
 import 'package:todo_app_getx/constants/dimensions.dart';
 import 'package:todo_app_getx/constants/styles.dart';
 import 'package:todo_app_getx/constants/values.dart';
@@ -15,8 +16,8 @@ class CustomButton extends StatelessWidget {
 
   const CustomButton({
     Key? key,
-    this.buttonColor = Colors.amber, // todo:: this will be primary color,
-    this.iconColor = Colors.grey, // todo:: this will be default icon color,
+    this.buttonColor = cBrandColor, // todo:: this will be primary color,
+    this.iconColor = cIconColor, // todo:: this will be default icon color,
     this.borderColor,
     this.iconSize,
     required this.label,

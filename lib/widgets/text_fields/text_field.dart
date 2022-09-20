@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:todo_app_getx/constants/colors.dart';
 import 'package:todo_app_getx/constants/dimensions.dart';
 import 'package:todo_app_getx/constants/styles.dart';
 import 'package:todo_app_getx/constants/values.dart';
@@ -53,7 +53,7 @@ class CustomTextField extends StatelessWidget {
       obscureText: obscureText,
       textAlign: TextAlign.start,
       textCapitalization: TextCapitalization.sentences,
-      style: f14TextStyle(Colors.black, FontWeight.w400),
+      style: f16TextStyle(Colors.black, FontWeight.w400),
       readOnly: readOnly,
       focusNode: focusNode,
       maxLength: maxLength,
@@ -68,30 +68,30 @@ class CustomTextField extends StatelessWidget {
                 child: suffixWidget,
               )
             : null,
-        fillColor: isSearch ? Colors.transparent : Colors.grey.withOpacity(.2),
+
         alignLabelWithHint: true, // This is necessary if the maxLines is greater than line 1.
         hintText: hint,
         labelText: label,
-        hintStyle: f14TextStyle(Colors.grey, FontWeight.w400),
         counter: const SizedBox.shrink(),
-        contentPadding: const EdgeInsets.symmetric(horizontal: kPaddingSize20, vertical: kPaddingSize10),
-        floatingLabelBehavior: label == null ? FloatingLabelBehavior.never : FloatingLabelBehavior.always,
+        contentPadding: const EdgeInsets.symmetric(horizontal: kPaddingSize10, vertical: kPaddingSize10),
+        floatingLabelBehavior: label == null ? FloatingLabelBehavior.never : FloatingLabelBehavior.auto,
         border: OutlineInputBorder(
-          borderRadius: k10BorderRadius,
-          borderSide: const BorderSide(width: 0, style: BorderStyle.none),
+          borderRadius: k5BorderRadius,
+          borderSide: const BorderSide(width: 1, color: cTitleTextColor),
         ),
         enabledBorder: isSearch
+            ? null
+            : OutlineInputBorder(
+                borderRadius: k5BorderRadius,
+                borderSide: const BorderSide(width: 1, color: cTitleTextColor),
+              ),
+        focusedBorder: !isSearch
             ? OutlineInputBorder(
-                borderRadius: k10BorderRadius,
-                borderSide: BorderSide(width: 1, color: cursorColor.withOpacity(.2)),
+                borderRadius: k5BorderRadius,
+                borderSide: BorderSide(width: 1, color: cursorColor),
               )
             : null,
-        focusedBorder: isSearch
-            ? OutlineInputBorder(
-                borderRadius: k10BorderRadius,
-                borderSide: BorderSide(width: 1, color: cursorColor.withOpacity(.2)),
-              )
-            : null,
+
       ),
       keyboardType: textInputType,
       textInputAction: textInputAction,

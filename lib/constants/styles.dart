@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:todo_app_getx/constants/colors.dart';
 import 'package:todo_app_getx/constants/dimensions.dart';
@@ -86,7 +85,6 @@ ButtonStyle buttonStyle(Color color) {
   ).copyWith(overlayColor: MaterialStateProperty.all(color.withOpacity(.2)));
 }
 
-
 ButtonStyle? kElevatedButtonStyle = ButtonStyle(
   alignment: Alignment.center,
   // textStyle: MaterialStateProperty.all(height > kSmallDeviceSizeLimit ? sH16MediumWhite : sH14MediumWhite),
@@ -109,7 +107,7 @@ TextStyle? kFloatingLabelStyle = MaterialStateTextStyle.resolveWith((Set<Materia
       ? cErrorColor
       : states.contains(MaterialState.focused)
           ? cBrandColor
-          : cPlaceHolderColor;
+          : cTitleTextColor;
   return TextStyle(color: color, fontSize: 12, fontFamily: 'Poppins');
 });
 

@@ -100,7 +100,7 @@ class TaskListView extends StatelessWidget {
                         endActionPane: ActionPane(
                           extentRatio: .5,
                           motion: const ScrollMotion(),
-                          children: _swipeRight(index),
+                          children: _swipeRight(index, context),
                         ),
                         startActionPane: ActionPane(
                           extentRatio: .5,
@@ -167,11 +167,12 @@ class TaskListView extends StatelessWidget {
     );
   }
 
-  List<Widget> _swipeRight(index) {
+  List<Widget> _swipeRight(index, context) {
     return [
       SlidableAction(
         onPressed: (listContext) async {
-          await _taskController.updateTask(_taskController.taskList[index]['id'].toString());
+          // await _taskController.updateTask(_taskController.taskList[index]['id'].toString());
+          await _taskController.showEditDialog(context);
         },
         backgroundColor: cBrandColor,
         foregroundColor: cWhiteColor,

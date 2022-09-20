@@ -2,16 +2,30 @@ import 'package:get/get.dart';
 import 'package:todo_app_getx/constants/urls.dart';
 import 'package:todo_app_getx/constants/values.dart';
 import 'package:todo_app_getx/controllers/api_controller.dart';
+import 'package:todo_app_getx/controllers/global_controller.dart';
 import 'package:todo_app_getx/helper/utility.dart';
+import 'package:todo_app_getx/widgets/dialogs/alert_dialog.dart';
+import 'package:todo_app_getx/widgets/dialogs/common_alert_dialog.dart';
 
 class TaskController extends GetxController {
   final ApiController _apiController = ApiController();
+  final GlobalController _globalController = Get.find();
 
   final RxBool isLoading = RxBool(false);
   final RxList taskList = RxList([]);
   final RxList totalCompleteList = RxList([]);
   final RxList totalIncompleteList = RxList([]);
   final RxMap taskDetails = RxMap({});
+
+  Future<dynamic> showEditDialog(context) {
+    return _globalController.showAlertDialog(
+      context: context,
+      child: const CommonAlertDialog(
+        title: 'Edit Task',
+        addContent: TaskDialog(),
+      ),
+    );
+  }
 
   @override
   void onInit() {

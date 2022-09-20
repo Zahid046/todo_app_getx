@@ -9,6 +9,7 @@ const double kFontSize28 = 28.0;
 const double kFontSize32 = 32.0;
 
 //* info:: padding amounts
+const double kPaddingSize0 = 0.0;
 const double kPaddingSize5 = 5.0;
 const double kPaddingSize10 = 10.0;
 const double kPaddingSize15 = 15.0;
